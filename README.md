@@ -1,24 +1,21 @@
-# blog
+# dumi app
 
-## Project setup
-```
-yarn install
-```
+## Getting Started
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+Install dependencies,
+
+```bash
+$ npm i
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+Start the dev server,
+
+```bash
+$ npm start
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+Build site app,
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```bash
+$ npm run build
+```
