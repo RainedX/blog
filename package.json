@@ -1,29 +1,24 @@
 {
-  "private": true,
-  "name": "dumi-app",
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "my blog",
+  "main": "index.js",
   "scripts": {
-    "start": "dumi dev",
-    "build": "dumi build",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
+    "dev": "yarn run dumi dev",
+    "build": "yarn run dumi build"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:RainedX/blog.git"
   },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
-  },
+  "keywords": [
+    "vue",
+    "react",
+    "typescript"
+  ],
+  "author": "Rain",
+  "license": "MIT",
   "devDependencies": {
-    "dumi": "^1.0.12",
-    "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
-    "yorkie": "^2.0.0"
+    "dumi": "^1.1.10"
   }
 }

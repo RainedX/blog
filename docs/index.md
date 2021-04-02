@@ -1,10 +1,10 @@
 ---
 hero:
   title: Code加加
-  desc: The best time to plant a tree was ten years ago,then is here and now.
+  desc: 种一棵树最好的时间是十年前，其次是现在
   actions:
-    - text: Start
-      link: /getting-started
+    - text: 开始
+      link: /typescript
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: 前端进阶
