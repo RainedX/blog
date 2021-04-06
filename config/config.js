@@ -1,6 +1,8 @@
 export default {
   mode: 'site',
   title: 'code',
+  exportStatic: {},
+  dynamicImport: {},
   navs: [
     null,
     {
