@@ -3,6 +3,8 @@ export default {
   title: 'code',
   exportStatic: {},
   dynamicImport: {},
+  favicon: './favicon.ico',
+  logo: '/cherry.svg',
   navs: [
     null,
     {
