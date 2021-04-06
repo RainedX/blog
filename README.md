@@ -1,28 +1,4 @@
-# Vue GuideBook
+# Introduction
 
-- **基本概念**
-  - [指令](concept/directive.md)
-  - [事件](concept/event.md)
-  - [插槽](concept/slot.md)
-  - [生命周期钩子函数](reactivity/lifecycle.md)
-- **组件化**
-- **响应式原理**
-  - [生命周期](reactivity/lifecycle.md)
-  - [响应式原理](reactivity/reactivity.md)
-  - [批量异步更新策略](reactivity/async-update.md)
-  - [nextTick](reactivity/next-tick.md)
-  - [虚拟 DOM](reactivity/virtual-dom.md)
-- **编译**
-  - [代码编译](compiler/introduction.md)
-  - parse
-  - optimize
-  - codegen
-- **扩展**
-  - event
-  - v-model
-  - slot
-  - keep-alive
-  - transition
-- **生态**
-  - Vue Router
-  - Vuex
+- **基本使用**
+  - [基本类型](typescript/index.md)
