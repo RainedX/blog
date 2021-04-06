@@ -4,6 +4,7 @@ order: 1
 toc: menu
 nav:
   title: TypeScript
+  order: 2
 ---
 
 ## 介绍
