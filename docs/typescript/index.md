@@ -1,5 +1,5 @@
 ---
-title: TypeScript
+title: 开始
 order: 1
 toc: menu
 nav:
@@ -86,3 +86,86 @@ tsc --init
 ```
 
 ### rollup 开发环境搭建
+
+1.项目依赖安装
+
+```javascript
+// rollup-plugin-typescript2 解析ts
+// @rollup/plugin-node-resolve 解析第三方模块
+// rollup-plugin-serve 启动一个服务
+npm install rollup typescript rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plugin-serve -D
+```
+
+2.配置 rollup.config.js
+
+```javascript
+import path from 'path';
+import ts from 'rollup-plugin-typescript2'; // 解析ts的插件
+import serve from 'rollup-plugin-serve'; // 启动本地服务
+import { nodeResolve } from '@rollup/plugin-node-resolve'; // 解析第三方模块
+
+export default {
+  input: 'src/index.ts', // 入口
+  output: {
+    format: 'iife', // 立即执行
+    file: path.resolve('dist/bundle.js'),
+    sourcemap: true, // 源码映射
+  },
+  plugins: [
+    // 第三方文件解析
+    nodeResolve({
+      extensions: ['.js', '.ts'],
+    }),
+    // ts入口配置文件
+    ts({
+      tsconfig: path.resolve(__dirname, 'tsconfig.json'),
+    }),
+    serve({
+      open: true,
+      openPage: '/public/index.html',
+      port: 3000,
+      contentBase: '',
+    }),
+  ],
+};
+```
+
+3.修改 tsconfig.json
+
+```javascript
+{
+  ...
+  "module": "ESNext",
+  "sourceMap": true,
+  ...
+}
+```
+
+4.修改 index.html，引入打包后的 bundle.js
+
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="/dist/bundle.js"></script>
+</body>
+</html>
+```
+
+5.文件目录结构
+
+```text
+- ts-demo
+  - public
+    index.html
+  - src
+    index.ts
+  package.json
+  tsconfig.json
+```
