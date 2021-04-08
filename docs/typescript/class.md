@@ -151,6 +151,7 @@ class Animal {
 ### 静态属性和方法
 
 ```javascript
+// 静态属性和方法是可以被子类继承
 class Animal {
     static type = 'animal';
     static sayHello() {
@@ -167,4 +168,49 @@ class Animal {
 }
 let animal = new Animal();
 console.log(animal.name);
+```
+
+**静态方法和普通方法中`super`代表的含义不同**
+
+```javascript
+class Animal {
+  static type = 'animal';
+  public name!: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  static sayHello() {
+    return 'hello';
+  }
+
+  eat() {
+    console.log('eat');
+  }
+}
+
+class Cat extends Animal {
+  constructor(name: string) {
+    super(name); // super ===> Animal.call(Cat, ...args)
+  }
+
+  static sayHello() {
+    let res = super.sayHello(); // super ===> Animal
+
+    return res + ' world';
+  }
+
+  eat() {
+    // super指代父类的原型
+    super.eat(); // super ===> Animal.prototype
+  }
+  // sleep相当于挂载到Cat.prototype上属性
+  get sleep() {
+    return 'sleep';
+  }
+}
+
+let tom = new Cat('Tom');
+console.log(tom.sleep); // sleep
 ```
