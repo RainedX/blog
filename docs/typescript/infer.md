@@ -34,7 +34,7 @@ let ele: HTMLElement | null = document.getElementById('#root');
 (<HTMLElement>ele).style.color = 'red'; // 不推荐 和JSX语法冲突
 
 // 双重断言
-(ele as any) as boolean; // 不建议使用会破坏原有类型
+(ele as any) as boolean; // 不建议使用，会破坏原有类型
 ```
 
 ## 字面量类型
