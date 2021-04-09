@@ -290,6 +290,29 @@ after-- - oneDecorator;
 
 ## Reflect Metadata
 
-```
+`es7`的一个提案，主要作用：在声明的时候添加和读取元数据。
 
+使用之前，`yarn add reflect-metadata -S`并且在`tsconfig.json`中配置`emitDecoratorMetadata: true`
+
+```javascript
+// 使用ts-node编译时，需要配置"module": "commonjs"
+// 否则原有基于rollup配置，"module": "ESNext"，需要使用(Reflect as any).defineMetadata
+import 'reflect-metadata';
+
+const user = {
+  name: 'Rain',
+};
+
+Reflect.defineMetadata('data', 'test', user);
+
+console.log(Reflect.getMetadata('data', user)); // test
+
+@Reflect.metadata('username', 'rain')
+class Person {
+  @Reflect.metadata('age', 12)
+  getUserAge() {}
+}
+
+console.log(Reflect.getMetadata('username', Person)); // rain
+console.log(Reflect.getMetadata('age', Person.prototype, 'getUserAge')); // 12
 ```
