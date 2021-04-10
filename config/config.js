@@ -2,7 +2,9 @@ export default {
   mode: 'site',
   title: 'code',
   exportStatic: {},
-  dynamicImport: {},
+  dynamicImport: {
+    loading: '@/docs/index.md'
+  },
   favicon: './favicon.ico',
   logo: '/cherry.svg',
   navs: [

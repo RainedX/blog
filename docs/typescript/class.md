@@ -214,3 +214,19 @@ class Cat extends Animal {
 let tom = new Cat('Tom');
 console.log(tom.sleep); // sleep
 ```
+
+## 抽象类
+
+抽象类不可以被实例化
+
+```javascript
+  namespace d {
+  abstract class Animal {
+    abstract name: string;
+  }
+
+  class Dog extends Animal {
+    name = 'rain';
+  }
+}
+```
