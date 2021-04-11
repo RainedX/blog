@@ -230,3 +230,29 @@ console.log(tom.sleep); // sleep
   }
 }
 ```
+
+**最后补充一下：我们再 ts 中表示类的类型？**
+
+```javascript
+class Person {
+  constructor(public name: string) {
+    this.name = name;
+  }
+}
+
+// 表示一个构造函数类型
+type IConstructor<T> = new (name: string) => T;
+
+//  也可以用接口表示
+// interface IConstructor<T> {
+//   new (name: string): T;
+// }
+
+function createIntance<T>(constructor: IConstructor<T>, name: string) {
+  return new constructor(name);
+}
+
+const instance = createIntance<Person>(Person, 'rain');
+
+console.log(instance.name);
+```
