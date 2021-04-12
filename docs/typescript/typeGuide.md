@@ -9,6 +9,7 @@ nav:
 类型守卫：通过判断识别所执行的代码块缩小类型的范围
 
 ## typeof
+
 ```javascript
 function getValue(val: number | string) {
   if (typeof val === 'number') {
@@ -20,6 +21,7 @@ function getValue(val: number | string) {
 ```
 
 ## instanceof
+
 ```javascript
 class Person {
   username = 'rain';
@@ -34,15 +36,17 @@ function getName(instance: Person | Animal) {
   if (instance instanceof Person) {
     console.log(instance.username);
   }
-  
+
   if (instance instanceof Animal) {
     console.log(instance.name);
-    
   }
 }
 ```
+
 ## in
+
 `x in y` 表示`x`属性在`y`中存在
+
 ```javascript
 class Person {
   username = 'rain';
@@ -56,43 +60,47 @@ class Animal {
 
 function getName(instance: Person | Animal) {
   if ('sayHello' in instance) {
-    instance.sayHello()
+    instance.sayHello();
   }
 
   if ('eat' in instance) {
-    instance.eat()
+    instance.eat();
   }
 }
 ```
+
 以上属于`javascript`和`typescript`共有的，下面介绍`typescript`中特有的
 
 ---
 
 ## 可辨识联合类型
+
 ```javascript
 interface IBook1 {
-  ID: 'XXX',
-  used(flag: boolean): boolean
+  ID: 'XXX';
+  used(flag: boolean): boolean;
 }
 
 interface IBook2 {
-  ID: 'YYY',
-  used(flag: boolean): boolean
+  ID: 'YYY';
+  used(flag: boolean): boolean;
 }
 
 function getBook(book: IBook1 | IBook2) {
-  if (book.ID === 'XXX') { // ID字段每个book不同，可辨识
+  if (book.ID === 'XXX') {
+    // ID字段每个book不同，可辨识
     book.used(true);
   }
 
   if (book.ID === 'YYY') {
-    book.used(false)
+    book.used(false);
   }
 }
 ```
+
 ## is
 
-在vue源码中常用`is`来封装类型判断函数，比如：`isObject`， `isVNode`
+在 vue 源码中常用`is`来封装类型判断函数，比如：`isObject`， `isVNode`
 
 ```javascript
 // error: 虽然我们知道在if判断后val一定是string,但是ts不知道
