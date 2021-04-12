@@ -46,3 +46,17 @@ let color: Color;
 color = 'red';
 color = 'blue'; // 错误
 ```
+## 其他
+```javascript
+// 索引访问操作符
+interface IPerson {
+  name: 'zf',
+  age: number
+}
+
+type P1= IPerson['age']
+
+// 使用typeof反推变量类型
+let person = { username: 1 };
+type P2 = typeof person;
+```

@@ -140,7 +140,7 @@ function fn(): void {
 没有类型是`never`的子类型或可以赋值给`never`类型（除了`never`本身之外）
 
 ```javascript
-let vv: never = any; // 错误
+let vv: never = 123; // 错误
 
 // 永远达不到的情况有三种：错误 ｜ 死循环 ｜ 类型判断时出现never
 function ErrorHandler(msg: string): never {

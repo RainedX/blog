@@ -1,6 +1,6 @@
 ---
 title: 泛型
-order: 7
+order: 8
 toc: menu
 nav:
   title: TypeScript

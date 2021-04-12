@@ -1,6 +1,6 @@
 ---
 title: 接口
-order: 6
+order: 7
 toc: menu
 nav:
   title: TypeScript
