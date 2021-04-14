@@ -4,7 +4,7 @@ order: 1
 toc: menu
 nav:
   title: 算法
-  order: 3
+  order: 5
 ---
 
 - 题目描述：

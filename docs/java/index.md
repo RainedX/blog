@@ -4,7 +4,7 @@ order: 1
 toc: menu
 nav:
   title: Java
-  order: 3
+  order: 4
 ---
 
 - 将`java`代码编写到扩展名为`.java`的文件中（源文件）
