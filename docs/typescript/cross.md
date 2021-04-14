@@ -40,3 +40,11 @@ function fn(): never {
 }
 let it: It = { name: fn() };
 ```
+
+```javascript
+function mixin<T extends object, K extends object>(a: T, b: K): T & K {
+  return { ...a, ...b };
+}
+
+mixin({ username: 'rain' }, { age: 1 });
+```

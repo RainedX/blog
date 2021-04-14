@@ -26,8 +26,8 @@ function handleCallback<T>(count: T): T {
   return count;
 }
 
-handleCallback<number>(1);
-handleCallback<string>('hello');
+handleCallback < number > 1;
+handleCallback < string > 'hello';
 ```
 
 ## 函数中使用泛型
@@ -53,6 +53,7 @@ handleGeneric2<number>([1, 2, 3]);
 ```
 
 ## 泛型约束
+
 ```javascript
 
 function handleAdd<T extends number, K extends number>(num1: T, num2: K) {
@@ -61,9 +62,11 @@ function handleAdd<T extends number, K extends number>(num1: T, num2: K) {
 
 handleAdd(1, 2);
 ```
+
 ## 属性约束
+
 ```javascript
-const getVal = <T extends Object, K extends keyof T>(obj: T, key: K) => {
+const getVal = <T extends object, K extends keyof T>(obj: T, key: K) => {
   console.log(obj[key]);
 }
 
@@ -71,57 +74,61 @@ getVal({ a: 1 }, 'a')
 ```
 
 ## 默认泛型
+
 ```javascript
 interface IGen<T = string> {
-  [key: string]: T
+  [key: string]: T;
 }
 
 type T1 = IGen;
-type T2 = IGen<number>
-type T3 = IGen<boolean>
+type T2 = IGen<number>;
+type T3 = IGen<boolean>;
 
-let str: T1 = { username: 'rain' }
-let age: T2 = { age: 12 }
-let bool: T3 = { flag: false }
+let str: T1 = { username: 'rain' };
+let age: T2 = { age: 12 };
+let bool: T3 = { flag: false };
 ```
 
 ## 接口中使用泛型
+
 ```javascript
 // 第一种 写在函数上的泛型表示调用函数时传入具体类型
 interface IG1 {
-  <T, K>(count: T, num: K): void
+  <T, K>(count: T, num: K): void;
 }
 
 const handleGeneric1: IG1 = <T, K>(count: T, num: K): void => {
   console.log(count, num);
-}
+};
 
 handleGeneric1(1, 1);
 
 // 第二种 写在接口后面的泛型表示使用接口时传入具体类型
 interface IG2<T, K> {
-  (count: T, num: K): void
+  (count: T, num: K): void;
 }
 
 const handleGeneric2: IG2<number, number> = <T, K>(count: T, num: K): void => {
   console.log(count, num);
-}
+};
 ```
 
 ## 类型别名中使用泛型
+
 ```javascript
-type IG1 = <T, K>(count: T, num: K)=> void
+type IG1 = <T, K>(count: T, num: K) => void;
 const handleGeneric1: IG1 = <T, K>(count: T, num: K): void => {
   console.log(count, num);
-}
+};
 
-type IG2<T, K> = (count: T, num: K)=> void
+type IG2<T, K> = (count: T, num: K) => void;
 const handleGeneric2: IG2<number, number> = <T, K>(count: T, num: K): void => {
   console.log(count, num);
-}
+};
 ```
 
 ## 类中使用泛型
+
 ```javascript
 class Person<T> {
   arr: T[] = [];
