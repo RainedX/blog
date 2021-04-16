@@ -40,6 +40,8 @@ type PartialTodo = DeepPartial<Todo>;
 
 ## `Required<Type>`
 
+将类型 T 中所有属性转换为必写
+
 ```javascript
 interface ICount {
   count?: number;
@@ -60,6 +62,8 @@ type PartialTodo = required<Todo>;
 
 ## `Readonly<Type>`
 
+将类型 T 中所有属性转换为只读
+
 ```javascript
 interface ICount {
   count?: number;
@@ -76,7 +80,70 @@ type ReadonlyTodo = Readonly<Todo>;
 
 ## `Record<Keys,Type>`
 
+将一个类型的所有属性值都映射到另一个类型上并创造一个新的类型，`Keys`可以是联合类型、对象、枚举、`string`、`number`、`symbol`
+
+```javascript
+type unique = keyof any; // string | number | symbol
+
+type myRecord<K extends keyof any, T> = {
+  [P in K]: T;
+};
+
+interface Goods {
+  id: number;
+  name: string;
+  price?: number;
+}
+
+const goodsMap: Record<string, Goods> = {};
+const goodsList: Goods[] = [
+  { id: 1, name: 'apple' },
+  { id: 2, name: 'orange', price: 2 },
+];
+
+goodsList.forEach((goods) => {
+  goodsMap[goods.name] = goods;
+});
+```
+
+```javascript
+type IHttpMethods = 'get' | 'post' | 'delete' | 'put';
+
+interface AxiosRequestConfig {
+  url?: string;
+  methods: IHttpMethods;
+  baseURL?: string;
+  headers?: any;
+  params?: any;
+  data?: any;
+  timeout?: number;
+  withCredentials?: boolean;
+}
+
+interface IHttpFn {
+  <T = any>(url: string, config?: AxiosRequestConfig): Promise<T>;
+}
+
+const methods = ['get', 'post', 'delete', 'put'];
+const httpMethods: Record<IHttpMethods, IHttpFn> = methods.reduce(
+  (previousValue: any, currentValue) => {
+    previousValue[currentValue] = (
+      url: string,
+      options: AxiosRequestConfig,
+    ) => {
+      // const { data, ...config } = options;
+      // Axios[currentValue] = (url, data, config) => { ... }
+    };
+
+    return previousValue;
+  },
+  {},
+);
+```
+
 ## `Pick<Type, Keys>`
+
+从类型 T 中挑选出指定属性的类型
 
 ```javascript
 interface Person {
@@ -87,9 +154,15 @@ interface Person {
 
 type myPick<T, K extends keyof T> = { [P in K]: T[P] };
 type PickPerson = Pick<Person, 'name' | 'age'>;
+// type OmitAddress = {
+//     name: string;
+//     age: number;
+// }
 ```
 
 ## `Omit<Type, Keys>`
+
+从类型 T 中排除出指定属性的类型
 
 ```javascript
 let person = {
@@ -99,5 +172,8 @@ let person = {
 };
 type myOmit<T, K extends any> = { [P in Exclude<keyof T, K>]: T[P] };
 type OmitAddress = myOmit<typeof person, 'address'>;
-
+// type OmitAddress = {
+//     name: string;
+//     age: number;
+// }
 ```
