@@ -24,19 +24,20 @@ foo = 123;
 
 **环境声明就好像你与编译器之间的一个约定，如果这些没有在编译时存在，但是你却使用了它们，则事情将会在没有警告的情况下中断**
 
-在`vue-router`中，通常在`package.json`中有以下定义：
+在`vue-router`中，通常在`package.json`中有以下定义, 告诉编译器去`types`中查找环境声明
 
 ```javascript
 "typings": "types/index.d.ts",
 ```
 
-告诉编译器去 types 中查找环境声明
+`vue-router`作为`vue`的一个插件，它的类型声明如下：
 
 ```javascript
 // index.d.ts
 import './vue';
 import { VueRouter } from './router';
 
+// 一个文件只能有一个export default
 export default VueRouter;
 
 export {
@@ -61,13 +62,14 @@ export {
 import Vue from 'vue'
 import VueRouter, { Route, RawLocation, NavigationGuard } from './index'
 
+// 增强类型以配合插件使用
 declare module 'vue/types/vue' {
   interface Vue {
     $router: VueRouter
     $route: Route
   }
 }
-
+// 声明额外的组件选项
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     router?: VueRouter
