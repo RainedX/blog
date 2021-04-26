@@ -1,11 +1,13 @@
 ---
-title: 冒泡排序
+title: 排序
 order: 1
 toc: menu
 nav:
   title: 算法
   order: 5
 ---
+
+## 冒泡排序
 
 - 题目描述：
 
