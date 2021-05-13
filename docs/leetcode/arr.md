@@ -60,7 +60,7 @@ const twoSum = function (nums, target) {
 
 ```javascript
 const threeSum = function (nums) {
-  nums.sort();
+  nums.sort((a, b) => a - b);
 
   let result = [];
 
@@ -70,6 +70,7 @@ const threeSum = function (nums) {
 
   for (let i = 0; i < len - 2; i++) {
     j = i + 1;
+    k = len - 1;
 
     if ((i > 0) & (nums[i] === nums[i - 1])) {
       continue;
