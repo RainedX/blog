@@ -164,3 +164,88 @@ var deleteDuplicates = function (head) {
   return dummy.next;
 };
 ```
+
+## 删除链表的倒数第 N 个结点
+
+- 题目描述：
+
+```text
+  给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。进阶：你能尝试使用一趟扫描实现吗？
+```
+
+- 示例：
+
+```javascript
+输入：head = [1,2,3,4,5], n = 2
+输出：[1,2,3,5]
+
+输入：head = [1], n = 1
+输出：[]
+```
+
+- 代码：
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function (head, n) {
+  var fast = head;
+  var slow = head;
+
+  while (n--) {
+    fast = fast.next;
+  }
+
+  while (fast.val) {
+    fast = fast.next;
+    slow = slow.next;
+  }
+
+  slow.next = fast;
+  return head;
+};
+```
+
+## 反转链表
+
+- 题目描述：
+
+```text
+  定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。
+```
+
+- 示例：
+
+```javascript
+输入: 1->2->3->4->5->NULL
+输出: 5->4->3->2->1->NULL
+```
+
+- 代码：
+
+```javascript
+var reverseList = function (head) {
+  let dummy = new ListNode();
+  let current = head;
+
+  while (current) {
+    let beforeNode = dummy.next;
+    let newNode = new ListNode(current.val);
+
+    dummy.next = newNode;
+    newNode.next = beforeNode;
+    current = current.next;
+  }
+  return dummy.next;
+};
+```
