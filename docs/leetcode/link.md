@@ -235,17 +235,64 @@ var removeNthFromEnd = function (head, n) {
 
 ```javascript
 var reverseList = function (head) {
-  let dummy = new ListNode();
-  let current = head;
+  let pre = null;
+  let cur = head;
 
-  while (current) {
-    let beforeNode = dummy.next;
-    let newNode = new ListNode(current.val);
+  while (cur) {
+    let next = cur.next;
 
-    dummy.next = newNode;
-    newNode.next = beforeNode;
-    current = current.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
   }
+
+  return pre;
+};
+```
+
+## 局部反转链表
+
+- 题目描述：
+
+```text
+  反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。
+```
+
+- 示例：
+
+```javascript
+输入: 1->2->3->4->5->NULL, m = 2, n = 4
+输出: 1->4->3->2->5->NULL
+```
+
+- 代码：
+
+```javascript
+const reverseBetween = function (head, m, n) {
+  let pre, cur, leftHead;
+  const dummy = new ListNode();
+
+  dummy.next = head;
+  leftHead = dummy;
+
+  for (let i = 0; i < m - 1; i++) {
+    leftHead = leftHead.next;
+  }
+  // 缓存第m个节点
+  let start = leftHead.next;
+
+  pre = start;
+  cur = pre.next;
+  for (let i = m; i < n; i++) {
+    let next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
+  }
+
+  leftHead.next = pre;
+  start.next = cur;
+
   return dummy.next;
 };
 ```
