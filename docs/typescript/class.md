@@ -45,7 +45,7 @@ class Dog extends Animal {
 
 ```javascript
 class Animal {
-  name = 'Rain';
+  name = 'Rained';
 
   constructor() {
     /*...*/
@@ -53,7 +53,7 @@ class Animal {
 }
 
 let a = new Animal();
-console.log(a.name); // Rain
+console.log(a.name); // Rained
 ```
 
 - `es6`属性不可以使用`static`描述，`es7`可以使用`static`定义一个静态属性：
